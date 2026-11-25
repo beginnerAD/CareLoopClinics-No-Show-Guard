@@ -61,10 +61,14 @@ Handled blank/missing notes (N004) deterministically as "skipped_blank" without 
 Verified Pydantic ValidationError handling against out-of-range confidence values (1.7) and missing required keys.
 Prompt Engineering (V1 Minimal vs. V2 CRAFT): Tested both prompts on Hinglish (N007) and ambiguous (N009) call notes. V2 (CRAFT) outperformed V1 by enforcing closed-set category boundaries and instructing the model to assign "other" on ambiguous notes rather than hallucinating a specific cause.
 Cross-Tabulation & Operational Recommendations: Joined notes_analysed.csv with appointments_clean.csv on appointment_id and cross-tabulated root_cause against reminder_sent:
+
 Automate Dual-Stage Reminders: Trigger automated SMS/WhatsApp reminders 24 hours and 2 hours prior to visits for all bookings with lead_days > 14 where reminder_sent = 'No' to eliminate forgot_or_no_reminder misses.
+
 Targeted Tele-Consult & Rescheduling Outreach: Use test_risk_scores.csv flags to proactively offer tele-consultations or flexible rescheduling to patients with long distance_km (distance_or_transport) or repeat prior_no_shows.
+
 6. Repository Structure
 CareLoop-Clinics-No-Show-Guard/
+
 ├── README.md                  # Project documentation, methodology, metrics, and findings
 ├── 01_ingest_clean.ipynb      # Part 1: Raw CSV validation, cleaning, Open-Meteo API enrichment, SQL generation
 ├── 02_queries.sql             # Part 2: 6 SQLite validation and operational analytical queries
